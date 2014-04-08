@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="MidtermService.asmx.cs" Class="MidtermWS.Service1" %>

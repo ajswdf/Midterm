@@ -1,0 +1,147 @@
+﻿<script>
+
+    $(document).on("click", ".show-page-loading-msg", function () {
+        var $this = $(this),
+			theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+			msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+			textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+			textonly = !!$this.jqmData("textonly");
+        html = $this.jqmData("html") || "";
+        $.mobile.loading('show', {
+            text: msgText,
+            textVisible: textVisible,
+            theme: theme,
+            textonly: textonly,
+            html: html
+        });
+    })
+		.on("click", ".hide-page-loading-msg", function () {
+		    $.mobile.loading('hide');
+		});
+
+
+    $("#ButtonEventPage").on("pageshow", function (e) {
+
+
+        $("#EventButton").on("click", function (e) {
+
+            $("#status").html("<p>Loading...</p>");
+            console.log("You Get the random number: " + Math.random())
+            setTimeout(function () {
+                $("#status").html("<p>You Got a random number: " + Math.random() + "</p>");
+            }, 400);
+        });
+
+
+        $("#WelcomeButton").on("click", function (e) {
+
+
+            $("#status").html("<p>Welcome to Tutorial2</p>");
+
+        });
+
+
+    });
+
+
+    var n = 0;
+    $("div.enterleave").mouseenter(function () {
+        $("p:first", this).text("mouse enter");
+    }).mouseleave(function () {
+        $("p:first", this).text("mouse leave");
+
+    });
+
+    $("li").hover(
+      function () {
+          $(this).append($("<span> Your Choice</span>"));
+      },
+      function () {
+          $(this).find("span:last").remove();
+      }
+    );
+
+    //li with fade class
+    $("li.fade").hover(function () { $(this).fadeOut(100); $(this).fadeIn(500); });
+
+</script>
+
+<div data-role="page" id="page1">
+
+     <div data-role="header">
+          <h1>Midterm</h1>
+     </div>
+
+     <div data-role="content">     
+          <p><a href="#LogInPage" data-role="button">Log In</a></p>
+	  <p><a href="#CreateRoutePage" data-role="button">Create Route</a></p>      
+	  <p><a href="#ChooseRoutePage" data-role="button">Choose Route</a></p>          
+ 	               
+     </div>
+     
+  
+     
+</div>
+
+<div data-role="page" id="LogInPage">
+
+     <div data-role="header">
+     	  <a data-rel="back" data-icon="home">Home</a>
+          <h1>Log In</h1>
+     </div>
+
+     <div data-role="content">     
+	    <div data-role="fieldcontain">
+            <label for="username">User Name:</label>
+            <input type="text" name="username" id="username" value=""  />
+        </div>
+         <div data-role="fieldcontain">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" value="" />
+        </div>
+     </div>
+     
+     
+     
+</div>
+
+
+
+<div data-role="page" id="CreateRoutePage">
+
+
+
+
+
+     <div align="center" data-role="header">
+
+     	  <a data-rel="back" data-icon="home">Home</a>
+          <h1>Create Route</h1>
+     </div> <br><br>
+        <div data-role="fieldcontain">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value=""  />
+        </div>
+        <div data-role="fieldcontain">
+            <label for="desc">Description:</label>
+            <input type="text" name="desc" id="desc" value=""  />
+        </div>
+        <div data-role="fieldcontain">
+            <label for="price">Price:</label>
+            <input type="text" name="price" id="price" value=""  />
+        </div>
+        <button id="GetMap">Get Map</button>
+
+</div>
+
+<div data-role="page" id="ChooseRoutePage">
+    <div align="center" data-role="header">
+        <a data-rel="dack" data-icon="home">Home</a>
+        <h1>Choose Route</h1>
+    </div><br><br>
+
+    
+<button id="Route1">Route1</button>
+<button id="Route2">Route1</button>
+     
+</div>
